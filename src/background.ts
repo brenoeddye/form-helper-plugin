@@ -1,3 +1,3 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log('Extensão Vue.js com TypeScript instalada!');
+    console.log('Form Helper installed succesfully!');
 });
