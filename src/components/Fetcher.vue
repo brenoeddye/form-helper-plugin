@@ -1,18 +1,23 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, watch, h } from 'vue';
 
+import address from     '../data/address.json';
+import mails from       '../data/mails.json';
+import names from       '../data/names.json';
+import phones from      '../data/phones.json';
+
 interface DataResponse {
     [key: string]: any;
 }
 
 export default defineComponent({
-    name: 'DataFetcher',
     props: {
         dataType: {
             type: String,
             required: true,
         },
     },
+    
     setup(props, { slots }) {
         const data = ref<DataResponse | null>(null);
         const loading = ref<boolean>(true);
@@ -24,10 +29,10 @@ export default defineComponent({
                 error.value = null;
 
                 const dataMapping: { [key: string]: string } = {
-                    names:      '../../data/names.json',
-                    address:    '../../data/address.json',
-                    mails:      '../../data/mails.json',
-                    phones:     '../../data/phones.json',
+                    names:      names,
+                    address:    address,
+                    mails:      mails,
+                    phones:     phones,
                 };
 
                 const jsonPath = dataMapping[type];
